@@ -203,6 +203,23 @@ open class TimePeriodCollection: TimePeriodGroup {
         return collection
     }
     
+    /**
+     *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s
+     *  containing either the start date(Exclude) or the end date(Exclude)--or both--of the given `TimePeriod`.
+     *
+     *  - parameter period: The period to compare each other period to
+     *
+     *  - returns: Collection of periods overlapped by the given period
+     */
+    public func periodsOverlaps(by period: TimePeriodProtocol) -> TimePeriodCollection {
+        let collection = TimePeriodCollection()
+        //Filter by periop
+        collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
+            return timePeriod.overlaps(with: period)
+        })
+        return collection
+    }
+    
     // MARK: - Map
     
     public func map(_ transform: (TimePeriodProtocol) throws -> TimePeriodProtocol) rethrows -> TimePeriodCollection {

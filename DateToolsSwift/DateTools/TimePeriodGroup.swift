@@ -105,7 +105,7 @@ open class TimePeriodGroup: Sequence {
         return try periods.split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, whereSeparator: isSeparator)
     }
     
-    subscript(index: Int) -> TimePeriodProtocol {
+    public subscript(index: Int) -> TimePeriodProtocol {
         get {
             return periods[index]
         }
