@@ -4,8 +4,6 @@
 //
 //  Created by Grayson Webster on 8/17/16.
 //  Copyright © 2016 Grayson Webster. All rights reserved.
-//  Modifed by Thomas
-//  Add a date time builder
 //
 
 import Foundation
@@ -88,19 +86,5 @@ public extension Date {
 	public init (dateString: String, format: String) {
 		self.init(dateString: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
 	}
-    
-    
-    /**
-     *  Construct date with date and time component from different Date objects respectively
-     *
-     *  - parameter dateComponent: source of new date's year, month and day. Will use 1970/1/1 if it's nil
-     *  - parameter timeComponent: source of new date's hour, minute and second. Will use 00:00:00 if it's nil
-     */
-    public static func DateTimeBuilder(dateComponent:Date?, timeComponent:Date?) -> Date {
-        let date = dateComponent ?? Date(timeIntervalSince1970: 0)
-        let time = timeComponent ?? Date(timeIntervalSince1970: 0)
-        
-        return Date(year: date.year, month: date.month, day: date.day, hour: time.hour, minute: time.minute, second: time.second)
-    }
 }
 
