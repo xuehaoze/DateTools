@@ -96,11 +96,11 @@ public extension Date {
      *  - parameter dateComponent: source of new date's year, month and day. Will use 1970/1/1 if it's nil
      *  - parameter timeComponent: source of new date's hour, minute and second. Will use 00:00:00 if it's nil
      */
-    public func DateTimeBuilder(dateComponent:Date?, timeComponent:Date?) {
+    public func DateTimeBuilder(dateComponent:Date?, timeComponent:Date?) -> Date {
         let date = dateComponent ?? Date(timeIntervalSince1970: 0)
         let time = timeComponent ?? Date(timeIntervalSince1970: 0)
         
-        self.init(year: date.year, month: date.month, day: date.day, hour: time.hour, minute: time.minute, second: time.second)
+        return Date(year: date.year, month: date.month, day: date.day, hour: time.hour, minute: time.minute, second: time.second)
     }
 }
 
