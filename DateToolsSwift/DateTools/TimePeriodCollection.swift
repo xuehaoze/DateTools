@@ -91,9 +91,10 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // In place
     /**
-     *  Sort periods array in place by beginning
+     *  Sort periods array in place by beginning, depending on areInIncreasingOrder
+     *  If areInIncreasingOrder is true, the earliest date will become the first in the array.
      */
-    public func sortByBeginning() {
+    public func sortByBeginning(areInIncreasingOrder:Bool) {
         self.sort { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
             if period1.beginning == nil && period2.beginning == nil {
                 return false
@@ -102,7 +103,8 @@ open class TimePeriodCollection: TimePeriodGroup {
             } else if (period2.beginning == nil) {
                 return false
             } else {
-                return period2.beginning! < period1.beginning!
+                let result = areInIncreasingOrder ? period1.beginning! < period2.beginning! : period2.beginning! < period1.beginning!
+                return result
             }
         }
     }
